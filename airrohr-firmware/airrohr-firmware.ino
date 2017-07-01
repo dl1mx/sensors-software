@@ -2337,7 +2337,7 @@ void setup() {
 	if (has_display) debug_out(F("Zeige auf Display..."),DEBUG_MIN_INFO,1);
 	if (has_lcd1602) debug_out(F("Zeige auf LCD 1602..."),DEBUG_MIN_INFO,1);
 	if (bmp_read) {
-		if (!bmp.begin()) {
+		if (!bmp.begin(0x76) && !bmp.begin(0x77)) {
 			debug_out(F("No valid BMP085 sensor, check wiring!"),DEBUG_MIN_INFO,1);
 			bmp_read = 0;
 		}
